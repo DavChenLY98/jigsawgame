@@ -7,6 +7,6 @@ public class application {
         new JFrameRegister();
         new JFrameLogin();
         new JFrameGame();
-        System.out.println("这是一个分支合并的测试");
+
     }
 }
