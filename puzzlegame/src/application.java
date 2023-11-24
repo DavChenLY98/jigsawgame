@@ -4,8 +4,8 @@ import com.henry.ui.JFrameRegister;
 
 public class application {
     public static void main(String[] args) {
-        new JFrameRegister();
-        new JFrameLogin();
+//        new JFrameRegister();
+//        new JFrameLogin();
         new JFrameGame();
 
     }
