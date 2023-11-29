@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bae73df-8e2e-487d-8b16-6aba15c0c2f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="3bae73df-8e2e-487d-8b16-6aba15c0c2f2" name="Changes" comment="添加图片素材，并实现窗口设置、菜单设置、图片添加等功能">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_11_23_22_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_11_23_22_13__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puzzlegame/application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puzzlegame/application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/puzzlegame/src/com/henry/ui/JFrameGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/puzzlegame/src/com/henry/ui/JFrameGame.java" afterDir="false" />
     </list>
-    <list default="true" id="3bae73df-8e2e-487d-8b16-6aba15c0c2f2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,27 +44,36 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2YZNFtVu2i3pzZiPV8kUbmFOmeW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "21",
-    "last_opened_file_path": "D:/javaproject/gittest/jigsawgame/puzzlegame/puzzlegame.iml",
-    "onboarding.tips.debug.path": "D:/javaproject/jigsawgame/puzzlegame/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/javaproject/gittest/jigsawgame/puzzlegame/puzzlegame.iml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/javaproject/jigsawgame/puzzlegame/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="jigsawgame" />
@@ -84,6 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1700729041804</updated>
+      <workItem from="1700814250507" duration="6808000" />
     </task>
     <task id="LOCAL-00001" summary="JFrameModule">
       <option name="closed" value="true" />
@@ -101,25 +115,44 @@
       <option name="project" value="LOCAL" />
       <updated>1700731512517</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="删除打印语句">
+      <created>1700814651562</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700814651562</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="JFrameModule" />
-    <option name="LAST_COMMIT_MESSAGE" value="JFrameModule" />
+    <MESSAGE value="删除打印语句" />
+    <MESSAGE value="添加图片素材，并实现窗口设置、菜单设置、图片添加等功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加图片素材，并实现窗口设置、菜单设置、图片添加等功能" />
   </component>
 </project>
