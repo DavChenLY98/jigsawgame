@@ -2,13 +2,20 @@ package com.henry.ui;
 
 
 import javax.swing.*;
+import java.util.Random;
 
 public class JFrameGame extends JFrame {
+
+    int[] ArrIndex = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+
     public JFrameGame() {
         //初始化界面
         initJFrame();
         //初始化菜单
         initJMenuBar();
+        //随机二维矩阵
+        RandomImage();
+
         //初始化图片
         initImage();
 
@@ -16,18 +23,32 @@ public class JFrameGame extends JFrame {
         this.setVisible(true);
     }
 
+    private void RandomImage() {
+        Random r = new Random();
+        for (int i = 0; i < ArrIndex.length; i++) {
+            int index = r.nextInt(ArrIndex.length);
+            int temp = ArrIndex[i];
+            ArrIndex[i] = ArrIndex[index];
+            ArrIndex[index] = temp;
+        }
+    }
+
     private void initImage() {
-        int number=1;
+        int[][] Data = new int[4][4];
+        for (int i = 0; i < ArrIndex.length; i++) {
+            Data[i / 4][i % 4] = ArrIndex[i];
+        }
+
+
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 //创建一个管理容器存储图片对象
-                JLabel jLabel = new JLabel(new ImageIcon("puzzlegame/image/animal/animal1/"+number+".jpg"));
+                JLabel jLabel = new JLabel(new ImageIcon("puzzlegame/image/animal/animal1/" + Data[i][j] + ".jpg"));
                 //将管理容器放置在指定坐标位置
-                jLabel.setBounds(105*j, 105*i, 105, 105);
+                jLabel.setBounds(105 * j, 105 * i, 105, 105);
                 //把管理容器添加到界面中
                 this.getContentPane().add(jLabel);
                 //自增
-                number++;
             }
         }
 
