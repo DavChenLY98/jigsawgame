@@ -2,11 +2,17 @@ package com.henry.ui;
 
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class JFrameGame extends JFrame {
+public class JFrameGame extends JFrame implements KeyListener {
 
-    int[] ArrIndex = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+    int[][] data = new int[4][4];
+    //记录空白方块在data中的位置
+    int x = 0;
+    int y = 0;
 
     public JFrameGame() {
         //初始化界面
@@ -14,7 +20,7 @@ public class JFrameGame extends JFrame {
         //初始化菜单
         initJMenuBar();
         //随机二维矩阵
-        RandomImage();
+        initDate();
 
         //初始化图片
         initImage();
@@ -23,7 +29,9 @@ public class JFrameGame extends JFrame {
         this.setVisible(true);
     }
 
-    private void RandomImage() {
+    private void initDate() {
+
+        int[] ArrIndex = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
         Random r = new Random();
         for (int i = 0; i < ArrIndex.length; i++) {
             int index = r.nextInt(ArrIndex.length);
@@ -31,26 +39,44 @@ public class JFrameGame extends JFrame {
             ArrIndex[i] = ArrIndex[index];
             ArrIndex[index] = temp;
         }
+
+        for (int i = 0; i < ArrIndex.length; i++) {
+            if (ArrIndex[i] == 0) {
+                x = i / 4;
+                y = i % 4;
+            } else {
+                data[i / 4][i % 4] = ArrIndex[i];
+            }
+
+        }
+
     }
 
     private void initImage() {
-        int[][] Data = new int[4][4];
-        for (int i = 0; i < ArrIndex.length; i++) {
-            Data[i / 4][i % 4] = ArrIndex[i];
-        }
+        //细节：先加载的图片在上方，后加载的图片在下方。
 
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 //创建一个管理容器存储图片对象
-                JLabel jLabel = new JLabel(new ImageIcon("puzzlegame/image/animal/animal1/" + Data[i][j] + ".jpg"));
+                JLabel jLabel = new JLabel(new ImageIcon("puzzlegame/image/animal/animal3/"
+                        + data[i][j] + ".jpg"));
                 //将管理容器放置在指定坐标位置
-                jLabel.setBounds(105 * j, 105 * i, 105, 105);
+                jLabel.setBounds(105 * j + 83, 105 * i + 134, 105, 105);
                 //把管理容器添加到界面中
+                jLabel.setBorder(new BevelBorder(BevelBorder.LOWERED));
                 this.getContentPane().add(jLabel);
-                //自增
             }
         }
+
+        //添加背景边框
+        ImageIcon bg = new ImageIcon("puzzlegame/image/background.png");
+        //利用容器存储图片对象
+        JLabel background = new JLabel(bg);
+//        JLabel background =new JLabel(new ImageIcon("puzzlegame/image/background.png"));
+        //设置背景对象对的边框大小和位置
+        background.setBounds(40, 40, 508, 560);
+        this.getContentPane().add(background);
 
 
     }
@@ -91,8 +117,44 @@ public class JFrameGame extends JFrame {
         //设置界面居中
         this.setLocationRelativeTo(null);
         //设置关闭模式
-        this.setDefaultCloseOperation(3);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //取消默认的居中放置，只有取消了才会按照XY指定坐标放置管理容器
         this.setLayout(null);
+        //添加键盘监听事件
+        this.addKeyListener(this);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        //对上、下、左、右进行判断
+        //左：37 上：38 右：39 下：40
+        int code = e.getKeyCode();
+        if (code == 37) {
+            int temp = data[x][y];
+            data[x][y] = data[x][y - 1];
+            data[x][y - 1] = temp;
+        } else if (code == 38) {
+            int temp = data[x][y];
+            data[x][y] = data[x - 1][y];
+            data[x - 1][y] = temp;
+        } else if (code == 39) {
+            int temp = data[x][y];
+            data[x][y] = data[x][y + 1];
+            data[x][y + 1] = temp;
+        } else if (code == 40) {
+            int temp = data[x][y];
+            data[x][y] = data[x + 1][y];
+            data[x + 1][y] = temp;
+        }
     }
 }
