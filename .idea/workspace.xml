@@ -71,6 +71,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.henry.ui" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="jigsawgame" />
@@ -95,8 +100,6 @@
       <option name="presentableId" value="Default" />
       <updated>1700729041804</updated>
       <workItem from="1700814250507" duration="6808000" />
-      <workItem from="1701333532540" duration="2683000" />
-      <workItem from="1701336275479" duration="1596000" />
     </task>
     <task id="LOCAL-00001" summary="JFrameModule">
       <option name="closed" value="true" />
