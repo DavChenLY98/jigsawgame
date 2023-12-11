@@ -3,13 +3,26 @@ package com.henry.ui;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class JFrameGame extends JFrame implements KeyListener {
+public class JFrameGame extends JFrame implements KeyListener, ActionListener {
 
+    //创建条目
+    JMenuItem replayJMenuItem = new JMenuItem("重新游戏");
+    JMenuItem reLoginJMenuItem = new JMenuItem("重新登录");
+    JMenuItem closegameJMenuItem = new JMenuItem("关闭游戏");
+    JMenuItem publicAccountJMenuItem = new JMenuItem("公众号");
     int[][] data = new int[4][4];
+    int count = 0;
+    int[][] win = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 0}};
     //记录空白方块在data中的位置
     int x = 0;
     int y = 0;
@@ -45,9 +58,9 @@ public class JFrameGame extends JFrame implements KeyListener {
             if (ArrIndex[i] == 0) {
                 x = i / 4;
                 y = i % 4;
-            } else {
-                data[i / 4][i % 4] = ArrIndex[i];
             }
+            data[i / 4][i % 4] = ArrIndex[i];
+
 
         }
 
@@ -57,6 +70,16 @@ public class JFrameGame extends JFrame implements KeyListener {
         //细节：先加载的图片在上方，后加载的图片在下方。
         //清楚已有的图片
         this.getContentPane().removeAll();
+
+        if (victory()) {
+            JLabel winJLable = new JLabel(new ImageIcon("puzzlegame/image/win.png"));
+            winJLable.setBounds(203, 283, 197, 73);
+            this.getContentPane().add(winJLable);
+        }
+
+        JLabel stepJLable = new JLabel("步数:" + count);
+        stepJLable.setBounds(50, 30, 100, 20);
+        this.getContentPane().add(stepJLable);
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -92,21 +115,23 @@ public class JFrameGame extends JFrame implements KeyListener {
         //创建选项
         JMenu functionJMenu = new JMenu("功能");
         JMenu aboutUsJMenu = new JMenu("关于我们");
-        //创建条目
-        JMenuItem replayJMenuItem = new JMenuItem("重新游戏");
-        JMenuItem reLoginJMenuItem = new JMenuItem("重新登录");
-        JMenuItem closegameJMenuItem = new JMenuItem("关闭游戏");
 
-        JMenuItem publicAccountJMenuItem = new JMenuItem("公众号");
         //将条目添加到选项中
         functionJMenu.add(replayJMenuItem);
         functionJMenu.add(reLoginJMenuItem);
         functionJMenu.add(closegameJMenuItem);
-
         aboutUsJMenu.add(publicAccountJMenuItem);
+
         //将选项添加到菜单中
         jMenuBar.add(functionJMenu);
         jMenuBar.add(aboutUsJMenu);
+        //给项目添加绑定事件
+        replayJMenuItem.addActionListener(this);
+        reLoginJMenuItem.addActionListener(this);
+        closegameJMenuItem.addActionListener(this);
+        publicAccountJMenuItem.addActionListener(this);
+
+
         //显示菜单栏
         this.setJMenuBar(jMenuBar);
     }
@@ -135,6 +160,10 @@ public class JFrameGame extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //判断游戏是否胜利
+        if (victory()) {
+            return;
+        }
         if (e.getKeyCode() == 65) {
             this.getContentPane().removeAll();
             JLabel jLabel = new JLabel(new ImageIcon(path + "all.jpg"));
@@ -158,6 +187,12 @@ public class JFrameGame extends JFrame implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+        //判断游戏是否胜利，胜利则不再调用该监听
+        if (victory()) {
+            return;
+        }
+
         //对上、下、左、右进行判断
         //左：37 上：38 右：39 下：40
         int code = e.getKeyCode();
@@ -169,6 +204,7 @@ public class JFrameGame extends JFrame implements KeyListener {
             data[x][y] = data[x][y - 1];
             data[x][y - 1] = 0;
             y--;
+            count++;
             initImage();
         } else if (code == 38) {
             //已经靠上边界
@@ -178,6 +214,7 @@ public class JFrameGame extends JFrame implements KeyListener {
             data[x][y] = data[x - 1][y];
             data[x - 1][y] = 0;
             x--;
+            count++;
             initImage();
         } else if (code == 39) {
             //已经靠右边界
@@ -187,6 +224,7 @@ public class JFrameGame extends JFrame implements KeyListener {
             data[x][y] = data[x][y + 1];
             data[x][y + 1] = 0;
             y++;
+            count++;
             initImage();
         } else if (code == 40) {
             //已经靠下边界
@@ -196,10 +234,11 @@ public class JFrameGame extends JFrame implements KeyListener {
             data[x][y] = data[x + 1][y];
             data[x + 1][y] = 0;
             x++;
+            count++;
             initImage();
         } else if (code == 65) {    //当松开a键时，图片重新转换为分割后的随即图片
             initImage();
-        } else if (code == 87) {
+        } else if (code == 87) {    //按下w后直接通关
             data = new int[][]{
                     {1, 2, 3, 4},
                     {5, 6, 7, 8},
@@ -209,6 +248,54 @@ public class JFrameGame extends JFrame implements KeyListener {
             initImage();
             x = 3;
             y = 3;
+        }
+    }
+
+    public boolean victory() {
+        for (int i = 0; i < 15; i++) {
+            if (win[i / 4][i % 4] != data[i / 4][i % 4]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        if (obj == replayJMenuItem) {
+            //表示重新玩游戏
+            count = 0;
+            initDate();
+            initImage();
+        } else if (obj==reLoginJMenuItem) {
+            //表示重新登录
+            //隐藏当前窗口
+            this.setVisible(false);
+            //显示登录界面
+            new JFrameLogin();
+        } else if (obj==closegameJMenuItem) {
+            //表示关闭游戏
+            System.exit(0);
+        } else if (obj==publicAccountJMenuItem) {
+            //表示关于我们
+            JDialog jDialog =new JDialog();
+            //添加存储图片的容器
+            JLabel jLabel=new JLabel(new ImageIcon("puzzlegame/image/about.png"));
+            //设置容器的位置大小
+            jLabel.setBounds(0,0,258,258);
+            //将容器添加到弹框组件中
+            jDialog.getContentPane().add(jLabel);
+            //设置弹框的大小
+            jDialog.setSize(344,344);
+            //设置置顶
+            jDialog.setAlwaysOnTop(true);
+            //设置居中
+            jDialog.setLocationRelativeTo(null);
+            //设置不关闭无法进行其他操作
+            jDialog.setModal(true);
+            //设置可视
+            jDialog.setVisible(true);
         }
     }
 }

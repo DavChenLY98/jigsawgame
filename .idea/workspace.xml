@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bae73df-8e2e-487d-8b16-6aba15c0c2f2" name="Changes" comment="添加图片素材，并实现窗口设置、菜单设置、图片添加等功能">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_11_23_22_13_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_11_23_22_13__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/puzzlegame/com/henry/ui/JFrameGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/puzzlegame/src/com/henry/ui/JFrameGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/puzzlegame/src/com/henry/ui/JFrameGame.java" afterDir="false" />
@@ -71,11 +73,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.henry.ui" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="jigsawgame" />
@@ -100,6 +97,8 @@
       <option name="presentableId" value="Default" />
       <updated>1700729041804</updated>
       <workItem from="1700814250507" duration="6808000" />
+      <workItem from="1701333532540" duration="2683000" />
+      <workItem from="1701336275479" duration="1596000" />
     </task>
     <task id="LOCAL-00001" summary="JFrameModule">
       <option name="closed" value="true" />
@@ -136,6 +135,13 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="74" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="69" />
+                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="64" />
+                </map>
+              </option>
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
                   <entry key="Show.Git.Branches" value="true" />
