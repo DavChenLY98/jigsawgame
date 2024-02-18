@@ -7,6 +7,7 @@ public class application {
 //        new JFrameRegister();
 //        new JFrameLogin();
         new JFrameGame();
+        System.out.println("重装系统后的测试！");
 
     }
 }
